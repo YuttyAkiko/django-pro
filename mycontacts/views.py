@@ -73,3 +73,13 @@ def edit(request, id):
             return render(request, 'mycontacts/edit.html', context)
     else:
         return render(request, 'mycontacts/edit.html', context)
+    
+def delete(request, id):
+    contact = Contact.objects.get(pk=id)
+    
+    if request.method == 'POST':
+        contact.delete()
+        contact_list = Contact.objects.all()
+        return HttpResponseRedirect("/", {'contacts': contact_list})
+    else:
+        return render(request, 'mycontacts/delete.html', {'contact': contact})

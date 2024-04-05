@@ -1,0 +1,22 @@
+{% extends 'mycontacts/background.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-show">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <h1 class="text-center">Tem certeza que deseja deletar o contato {{ contact.name }}?</h1>
+
+            <div class="text-center">
+                <button type="submit" class="btn" id="show">Confirm</button>
+                <a href="{% url 'show' %}">
+                    <button type="button" class="btn" id="show">Back</button>
+                </a>
+            </div>
+        </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'mycontacts/background.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-add">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-3">
+
+        <form id="add-contact-form" class="form" action="#" method="POST" role="form">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" tabindex="1" value="{{ contact.name }}">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Relation</label>
+                <input type="text" class="form-control" id="relation" name="relation" placeholder="Relation"
+                    tabindex="2" value="{{ contact.relation }}">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" tabindex="3"
+                value="{{ contact.phone }}">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email" tabindex="4"
+                value="{{ contact.email }}">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn ">Confirm</button>
+                <a href="{% url 'show' %}">
+                    <button type="submit" class="btn" id="show">Back</button>
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock content %}
